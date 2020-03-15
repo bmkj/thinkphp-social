@@ -70,7 +70,7 @@ class Oauth extends Controller
             // 获取对象实例
             $sns = \liliuwei\social\Oauth::getInstance($type);
             //跳转到授权页面
-            $this->redirect($sns->getRequestCodeURL());
+            $this->redirect($sns->getRequestCodeURL(['action'=>'bind']));
         }
     
         //授权回调地址
@@ -94,6 +94,7 @@ class Oauth extends Controller
             } else {
                 echo "获取第三方用户的基本信息失败";
             }
+            echo input('action');//bind
         }
 }
 ```
