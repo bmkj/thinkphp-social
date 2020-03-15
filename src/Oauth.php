@@ -137,10 +137,15 @@ abstract class Oauth
 
     /**
      * 请求code
+     * @param array $paramArr callback地址额外参数，南国老符albert于20200316
      */
-    public function getRequestCodeURL()
+    public function getRequestCodeURL($paramArr = null)
     {
         $this->config();
+        
+        // 南国老符albert于20200316
+        if(is_array($paramArr)) $this->Callback .= '&'.http_build_query($paramArr);
+        
         //Oauth 标准参数
         $params = array(
             'client_id' => $this->AppKey,
